@@ -1,1 +1,1 @@
-sudo chmod +x /var/www/FGMS-node-Api/scripts/npm_install.sh
+sudo chmod +x /var/www/alert-grid-scada-api/scripts/npm_install.sh
