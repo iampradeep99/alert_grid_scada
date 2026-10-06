@@ -1,0 +1,1 @@
+sudo chmod +x /var/www/FGMS-node-Api/scripts/npm_install.sh

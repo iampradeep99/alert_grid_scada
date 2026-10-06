@@ -1,0 +1,11 @@
+version: 0.0
+os: linux
+files:
+  - source: .
+    destination: /var/www/FGMS-node-Api
+hooks:
+  AfterInstall:
+    - location: scripts/change_permissions.sh
+    - location: scripts/npm_install.sh
+      timeout: 300
+      runas: root
