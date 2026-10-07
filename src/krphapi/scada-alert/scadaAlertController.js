@@ -1,5 +1,6 @@
 import { jsonResponseHandler } from '../../helper/errorHandler.js';
 import { ScadaAlertService } from './scadaAlertService.js';
+import { emitScadaAlertCreated, emitScadaAlertUpdated } from '../../socket.js';
 
 export class ScadaAlertController {
   constructor() {
@@ -27,6 +28,7 @@ export class ScadaAlertController {
   addScadaAlert = async (req, res, next) => {
     try {
       const data = await this.scadaAlertService.addScadaAlert(req.body);
+      emitScadaAlertCreated(data);
       return jsonResponseHandler(data, 'SCADA alert created successfully', req, res, next);
     } catch (error) {
       return next(error);
@@ -36,6 +38,7 @@ export class ScadaAlertController {
   updateStatus = async (req, res, next) => {
     try {
       const data = await this.scadaAlertService.updateStatus(req.body);
+      emitScadaAlertUpdated(data);
       return jsonResponseHandler(data, 'SCADA alert status updated successfully', req, res, next);
     } catch (error) {
       return next(error);

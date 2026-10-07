@@ -6,8 +6,14 @@
   "type": "module",
   "scripts": {
     "start": "NODE_ENV=development nodemon src/index.js",
-    "dev": "nodemon src/index.js",
+    "dev": "node src/index.js",
     "prod": "NODE_ENV=production node src/index.js",
+    "worker:alarm": "node src/workers/alarm.worker.js",
+    "worker:analog": "node src/workers/analog.worker.js",
+    "worker:point": "node src/workers/point.worker.js",
+    "worker:nms": "node src/workers/nms.worker.js",
+    "worker:autoscale": "node src/workers/autoScaler.runner.js",
+    "socket:load-test": "node scripts/socket-load-test.js",
     "test": "node --test"
   },
   "keywords": [
@@ -19,13 +25,17 @@
   "author": "iampradeep99",
   "license": "ISC",
   "dependencies": {
+    "amqplib": "^0.10.9",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "pg": "^8.23.1",
+    "socket.io": "^4.8.4"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "socket.io-client": "^4.8.1"
   },
   "engines": {
     "node": ">=18"
